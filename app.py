@@ -1,9 +1,8 @@
-
 import openai
 import streamlit as st
 
-# Set your OpenAI API key
-openai.api_key = st.secrets["OPEN_AI_KEY"]
+# Set your OpenAI API key securely from Streamlit secrets
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 st.title("LinkedIn Post Generator")
 
@@ -23,7 +22,7 @@ if st.button("Generate LinkedIn Post"):
         Include 3–5 relevant hashtags at the end.
         """
 
-        response = openai.ChatCompletion.create(
+        response = client.chat.completions.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are a LinkedIn thought leader."},
@@ -33,5 +32,5 @@ if st.button("Generate LinkedIn Post"):
             max_tokens=300
         )
 
-        post = response["choices"][0]["message"]["content"]
+        post = response.choices[0].message.content
         st.text_area("Your Generated LinkedIn Post", post, height=200)
