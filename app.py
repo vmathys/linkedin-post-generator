@@ -3,7 +3,7 @@ import openai
 import streamlit as st
 
 # Set your OpenAI API key
-openai.api_key = st.secrets["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"]
+openai.api_key = st.secrets["OPEN_AI_KEY"]
 
 st.title("LinkedIn Post Generator")
 
