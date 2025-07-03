@@ -18,12 +18,12 @@ if st.button("Generate LinkedIn Post"):
         Tone: {tone}
         Goal: {goal}
 
-        Make sure the post is 3–5 sentences, engaging, and ends with a conversation starter or call to action.
-        Include 3–5 relevant hashtags at the end.
+        Make sure the post is 1–2 paragrpahs, engaging, starts with an interesting hook, and ends with a conversation starter or call to action.
+        Do not fabricate information and cite your sources.
         """
 
         response = client.chat.completions.create(
-            model="gpt-4",
+            model="gpt-3.5-turbo",
             messages=[
                 {"role": "system", "content": "You are a LinkedIn thought leader."},
                 {"role": "user", "content": prompt}
